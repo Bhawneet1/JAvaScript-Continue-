@@ -20,7 +20,28 @@
     
  </body>
  <script>
+    const requestUrl='https://api.github.com/users/Bhawneet1';
     const xhr=new XMLHttpRequest()//xhr request(XMLHttpRequest type)
-    xhr.open('GET',)
+
+    xhr.open('GET',requestUrl)
+    xhr.onreadystatechange=function(){
+        console.log(xhr.readyState);
+        //2
+        //3
+        //4
+        if(xhr.readyState===4){
+            console.log(this.responseText);
+            const data=JSON.parse(this.responseText);//convert string to Object
+            console.log(typeof data);//string(before conversion)//after Object
+            //mostly string
+            console.log(data.name);
+            
+        }
+    }
+    //go to requested api
+    // console.log("HERE");
+    xhr.send()
  </script>
  </html>
+
+ <!-- console.log()in V8 not part of js -->
