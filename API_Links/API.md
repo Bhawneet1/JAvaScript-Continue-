@@ -11,3 +11,7 @@ https://randomuser.me/
 json formator
 ```
 
+## My github api
+```text
+https://api.github.com/users/Bhawneet1
+```
