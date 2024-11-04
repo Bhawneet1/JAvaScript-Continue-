@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #313131;">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+<script>
+    //lexical scope
+    function outer(){
+        let username ="Bhawneet"
+        //console.log("Outer",mySecret); error as parent
+        
+        function inner(){
+            let mySecret="1234"
+            console.log("inner",username);
+            
+        }
+        function inner2()
+        {
+            console.log("inner2",username);
+            //console.log(mySecret);error can't be shared by siblings
+            
+            
+        }
+        inner()
+        inner2()
+    }
+    outer()
+    //console.log(`Too outer :${username}`);//error as outside scope of function
+    
+
+
+    //closure(jab ham function return karte hai 
+    //to uska poora lexical scope return hota hai)
+function makeFunc() {
+  const name = "Mozilla";//name use ho rah hai
+  //to lexical scope yha sai shuru hoga
+  function displayName() {
+    console.log(name);
+  }
+  return displayName;
+}
+
+const myFunc = makeFunc();
+myFunc();
+
+</script>
+<script>
+    // document.getElementById('orange').onclick=function(){
+    //     document.body.style.backgroundColor=`orange`
+    // }
+    // document.getElementById('green').onclick=function(){
+    //     document.body.style.backgroundColor=`green`
+    // } create a generic code
+    /*------------------------------*/
+    // function clickHandler(color){
+    //     document.body.style.backgroundColor=`${color}`
+    // }
+
+    ////document.getElementById('orange').onclick=clickHandler()
+    //function ka reference matlab mai uski defination
+    //dai deta hun(clickHandler)
+    //par agar execute karna hai to parenthesis
+    //yahan par hamne function directly execute kar
+    //diya to bina click kare execute therfore problem
+
+
+    function clickHandler(color){
+         return function(){
+            document.body.style.backgroundColor=`${color}`
+         }
+    }
+
+    document.getElementById('orange').onclick=clickHandler('orange')
+    //ab agar ham execute karenge to hame function return
+    //milega na ki execute to works
+</script>
+</html>
